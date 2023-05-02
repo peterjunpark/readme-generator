@@ -1,4 +1,3 @@
-// TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
 
@@ -46,8 +45,15 @@ const questions = [
   },
   {
     name: "license",
-    type: "input",
+    type: "list",
     message: "Which license is your project covered under?",
+    choices: [
+      "Apache License 2.0",
+      "GNU GPL v2",
+      "GNU GPL v3",
+      "ISC License",
+      "MIT License",
+    ]
   },
 ];
 
@@ -55,7 +61,14 @@ const questions = [
 function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+  inquirer.prompt(questions)
+  .then(answers => {
+    console.log(answers);
+  })
+}
 
 // Function call to initialize app
 init();
+
+//
