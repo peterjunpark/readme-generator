@@ -1,33 +1,44 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+let tableOfContents = "## Table of Contents\n";
+
 function renderLicenseBadge(license) {
-  return license ? `https://img.shields.io/badge/License-${license}-informational` : "";
+  return license
+    ? `https://img.shields.io/badge/License-${license.replace(/\s/g,"%20")}-informational`
+    : "";
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
 function renderLicenseLink(license) {
-  return license ? `[![License](${renderLicenseBadge(license)})](#License)` : "";
+  return license
+    ? `[![License](${renderLicenseBadge(license)})](#License)`
+    : "";
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license) {
+  return `## License\nThis application is covered under the ${license}. See [LICENSE](./LICENSE) in repo.`;
+}
 
-// TODO: Create a function to generate markdown for README
-function generateMarkdown({
-  title,
-  username,
-  email,
-  desc,
-  installation,
-  usage,
-  contributing,
-  tests,
-  license
-}) {
-  let readme = `# ${title}\n## Table of Contents\n`;
+function renderSection(heading, content) {
+  heading = heading.charAt(0).toUpperCase() + heading.substring(1);
+  tableOfContents += `1. [${heading}](## ${heading})\n`;
+  return `## ${heading}\n${content}\n`;
+}
+
+function generateMarkdown({ title, username, email, license, ...rest }) {
+  // Title, license badge, & table of contents section
+  let readme = `# ${title}\n${renderLicenseLink(license)}\n${tableOfContents}`;
+  // Main content section
+  for (prop in rest) {
+    if (rest[prop]) {
+      readme += renderSection(prop, rest[prop]);
+    }
+  }
+  // Questions section
+  if (email || username) readme += renderLicenseSection(license) + "\n## Questions\n";
+  if (email) {
+    readme += `If you have any additional questions, please reach out to me via email at [${email}](mailto:${email}).\n\n`;
+  }
+  if (username) {
+    readme += `To see more of my work, check out my GitHub profile: [${username}](https://github.com/${username}).`;
+  }
   return readme;
 }
-
 module.exports = generateMarkdown;

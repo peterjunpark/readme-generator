@@ -2,12 +2,15 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown.js");
 
-const greenify = (text) => `\x1b[32m${text}\x1b[0m\x1b[1m`;
+const greenify = text => `\x1b[32m${text}\x1b[0m\x1b[1m`;
 const questions = [
   {
     name: "title",
     type: "input",
     message: `The ${greenify("title")} of your project:`,
+    validate: answer => {
+      if (!answer) return "Please enter a title.";
+    },
   },
   {
     name: "username",
@@ -19,9 +22,10 @@ const questions = [
     type: "input",
     message: `Your ${greenify("email address")}:`,
     validate: answer => {
-      if (answer && (!answer.includes("@") || !answer.includes("."))) return "Please enter a valid email address.";
+      if (answer && (!answer.includes("@") || !answer.includes(".")))
+        return "Please enter a valid email address.";
       return true;
-    }
+    },
   },
   {
     name: "description",
@@ -41,7 +45,7 @@ const questions = [
     )} your project:`,
   },
   {
-    name: "contribute",
+    name: "contributing",
     type: "input",
     message: `Guidelines on ${greenify("contributing")} to your project:`,
   },
@@ -64,35 +68,23 @@ const questions = [
       "MIT License",
     ],
   },
-  {
-    name: "confirm",
-    type: "confirm",
-    message: "\x1b[35mAre the above details correct?\x1b[0m",
-  },
 ];
 
-// TODO: Create a function to write README file
 function writeToFile(fileName, data) {
   fs.writeFile(fileName, data, err => {
-    console.error(err);
-  })
-}
-
-// TODO: Create a function to initialize app
-function init() {
-  console.log(
-    "\x1b[1m\x1b[35m|==========| README Generator |==========|\x1b[0m"
-  );
-  console.log(
-    "\x1b[95mUse the following prompts to generate a README.md for your project."
-  );
-  inquirer.prompt(questions).then((answers) => {
-    const content = generateMarkdown(answers);
-    writeToFile("./README.md", content);
+    err
+      ? console.error(err)
+      : console.log(greenify("README.md created in ./output/!"));
   });
 }
 
-// Function call to initialize app
-init();
+function init() {
+  console.log(
+    `\x1b[1m\x1b[35m|==========| README Generator |==========|\x1b[0m\n\x1b[95mUse the following prompts to generate a README.md for your project.\nLeave a prompt blank to exclude that section from your README.`
+  );
+  inquirer.prompt(questions).then(answers => {
+    writeToFile("output/README.md", generateMarkdown(answers));
+  });
+}
 
-//
+init();
