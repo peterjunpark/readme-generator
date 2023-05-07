@@ -10,6 +10,7 @@ const questions = [
     message: `The ${greenify("title")} of your project:`,
     validate: answer => {
       if (!answer) return "Please enter a title.";
+      return true;
     },
   },
   {
