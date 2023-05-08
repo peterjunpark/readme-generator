@@ -24,9 +24,7 @@ Node.js and npm are required to install this application. This application's fun
 ### Getting Started
 1. Navigate to your local copy of the README Generator via your command line `cd`.
 2. Enter `node index.js` to start the application.
-3. Complete the prompts.
-   - Leave a prompt blank to exclude that section from your README (your project's title and license cannot be excluded).
-   - Some prompts will launch an instance of your preferred text editor on a temporary file. Once the your exit the editor, the contents of the temporary file are read in as the result. The editor to use is determined by reading the $VISUAL or $EDITOR environment variables. If neither of those are present, notepad (on Windows) or vim (Linux or Mac) is used. For help with using vim commands, refer to [this article](https://coderwall.com/p/adv71w/basic-vim-commands-for-getting-started).
+3. Complete the prompts. Leave a prompt blank to exclude that section from your README (your project's title and license cannot be excluded).
 4. Your generated README.md file will be created locally in the **output** folder.
 
 ![Screenshot 2023-05-08 at 12 14 07 PM](https://user-images.githubusercontent.com/115042610/236875594-9c1e7728-caba-454d-85a7-9679ae04f5ad.png)
