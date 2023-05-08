@@ -28,6 +28,8 @@ Node.js and npm are required to install this application. This application's fun
 4. Your generated README.md file will be created locally in the **output** folder.
 
 ![Screenshot 2023-05-08 at 12 14 07 PM](https://user-images.githubusercontent.com/115042610/236875594-9c1e7728-caba-454d-85a7-9679ae04f5ad.png)
+
+[Video walkthrough](https://youtu.be/mGzpWKRJPLI) on using the application.
 ## Contributing
 N/A
 ## Tests
