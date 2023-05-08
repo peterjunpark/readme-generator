@@ -75,7 +75,7 @@ function writeToFile(fileName, data) {
   fs.writeFile(fileName, data, err => {
     err
       ? console.error(err)
-      : console.log(greenify("README.md created in ./output/!"));
+      : console.log("\x1b[1m\x1b[35mREADME.md created in ./output/");
   });
 }
 
