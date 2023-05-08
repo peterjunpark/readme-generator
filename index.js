@@ -30,29 +30,29 @@ const questions = [
   },
   {
     name: "description",
-    type: "input",
+    type: "editor",
     message: `A brief ${greenify("description")} of your project:`,
   },
   {
     name: "installation",
-    type: "input",
+    type: "editor",
     message: `Instructions on ${greenify("how to install")} your project:`,
   },
   {
     name: "usage",
-    type: "input",
+    type: "editor",
     message: `Instructions and examples on ${greenify(
       "how to use"
     )} your project:`,
   },
   {
     name: "contributing",
-    type: "input",
+    type: "editor",
     message: `Guidelines on ${greenify("contributing")} to your project:`,
   },
   {
     name: "tests",
-    type: "input",
+    type: "editor",
     message: `Instructions on ${greenify(
       "how to run tests"
     )} included with your project:`,
