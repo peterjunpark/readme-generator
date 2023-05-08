@@ -1,4 +1,4 @@
-# titre
+# README Generator
 [![License](https://img.shields.io/badge/License-MIT%20License-informational)](#License)
 ## Table of Contents
 1. [Description](#Description)
@@ -6,7 +6,8 @@
 1. [Usage](#Usage)
 1. [Contributing](#Contributing)
 1. [Tests](#Tests)
-1. [License](#License)## Description
+1. [License](#License)
+## Description
 description
 ## Installation
 installation
